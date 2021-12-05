@@ -6,7 +6,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterStoreRequest extends StringRequest {
+public class RegisterStoreRequest extends StringRequest{
     private Map<String, String> params;
 
     public RegisterStoreRequest(

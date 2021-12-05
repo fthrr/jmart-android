@@ -78,7 +78,7 @@ public class AboutMeActivity extends AppCompatActivity {
                 }, new Response.ErrorListener(){
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Top Up unsuccessful, Not Connected to Server", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "System Failure", Toast.LENGTH_LONG).show();
                     }
                 }){
                     @Override
@@ -100,7 +100,6 @@ public class AboutMeActivity extends AppCompatActivity {
         et_storePhoneNumber = findViewById(R.id.et_storePhoneNumber);
         btnRegisterStoreCancel = findViewById(R.id.btnRegisterStoreCancel);
         btnRegisterStoreConfirm = findViewById(R.id.btnRegisterStoreConfirm);
-
         if(LoginActivity.getLoggedAccount().store != null){
             btnRegisterStore.setVisibility(View.GONE);
             cv_storeExists.setVisibility(View.VISIBLE);
@@ -120,7 +119,6 @@ public class AboutMeActivity extends AppCompatActivity {
                 cv_registerStore.setVisibility(View.VISIBLE);
             }
         });
-
         btnRegisterStoreCancel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -128,7 +126,6 @@ public class AboutMeActivity extends AppCompatActivity {
                 cv_registerStore.setVisibility(View.INVISIBLE);
             }
         });
-
         btnRegisterStoreConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

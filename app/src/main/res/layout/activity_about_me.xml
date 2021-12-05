@@ -202,7 +202,7 @@
                         android:layout_marginTop="15dp"
                         android:ems="18"
                         android:hint="Phone Number"
-                        android:inputType="number"
+                        android:inputType="textPersonName"
                         android:minHeight="48dp"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="@+id/et_storeAddress"
