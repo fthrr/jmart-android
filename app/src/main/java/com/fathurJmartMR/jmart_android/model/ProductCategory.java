@@ -1,5 +1,11 @@
 package com.fathurJmartMR.jmart_android.model;
 
+/**
+ * Enum Model class Product category
+ *
+ * @author Fathurrahman Irwansa
+ * @version Final
+ */
 public enum ProductCategory {
     BOOK,
     KITCHEN,

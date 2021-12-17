@@ -24,6 +24,12 @@ import com.google.gson.JsonObject;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Activity Class untuk Login Page
+ *
+ * @author Fathurrahman Irwansa
+ * @version Final
+ */
 public class LoginActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener{
 
     public static final Gson gson = new Gson();

@@ -4,145 +4,228 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".CreateProductActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="381dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@color/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/titleCreateProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:text="Create Product"
-            android:textSize="20sp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/et_createProductName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="66dp"
-            android:ems="16"
-            android:hint="Name"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
-
-        <EditText
-            android:id="@+id/et_createProductWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="126dp"
-            android:ems="16"
-            android:hint="Weigth"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
-
-        <EditText
-            android:id="@+id/et_createProductPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="186dp"
-            android:ems="16"
-            android:hint="Price"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
-
-        <EditText
-            android:id="@+id/et_createProductDiscount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="246dp"
-            android:ems="16"
-            android:hint="Discount"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
-
-        <TextView
-            android:id="@+id/textCreateProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="306dp"
-            android:text="Create Product"
-            android:textSize="16sp" />
-
-        <RadioGroup
-            android:id="@+id/radio_conditionList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radio_conditionNew"
+            <TextView
+                android:id="@+id/titleCreateProduct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="216dp"
-                android:layout_marginTop="293dp"
-                android:minHeight="48dp"
-                android:checked="true"
-                android:text="New" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Create Product"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioButton
-                android:id="@+id/radio_conditionUsed"
+            <EditText
+                android:id="@+id/et_createProductName"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="16dp"
+                android:ems="16"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:background="@drawable/textboxt"
+                android:textColorHint="@color/gray"
+                android:fontFamily="@font/montserrat"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleCreateProduct" />
+
+            <EditText
+                android:id="@+id/et_createProductWeight"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/textboxt"
+                android:ems="16"
+                android:fontFamily="@font/montserrat"
+                android:hint="Weigth"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/et_createProductName"
+                app:layout_constraintTop_toBottomOf="@+id/et_createProductName" />
+
+            <EditText
+                android:id="@+id/et_createProductPrice"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/textboxt"
+                android:ems="16"
+                android:fontFamily="@font/montserrat"
+                android:hint="Price"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/et_createProductWeight"
+                app:layout_constraintTop_toBottomOf="@+id/et_createProductWeight" />
+
+            <EditText
+                android:id="@+id/et_createProductDiscount"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="16"
+                android:hint="Discount"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:background="@drawable/textboxt"
+                android:textColorHint="@color/gray"
+                android:fontFamily="@font/montserrat"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/et_createProductPrice"
+                app:layout_constraintTop_toBottomOf="@+id/et_createProductPrice" />
+
+            <TextView
+                android:id="@+id/textCondition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="293dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Condition"
+                android:textSize="14sp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_createProductDiscount" />
+
+            <RadioGroup
+                android:id="@+id/radio_conditionList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/textCondition"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textCondition">
+
+                <RadioButton
+                    android:id="@+id/radio_conditionNew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:minHeight="48dp"
+                    android:buttonTint="@color/button_purple"
+                    android:textColor="@color/white"
+                    android:text="New" />
+
+                <RadioButton
+                    android:id="@+id/radio_conditionUsed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:minHeight="48dp"
+                    android:buttonTint="@color/button_purple"
+                    android:textColor="@color/white"
+                    android:text="Used" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/categoryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Category"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textCondition" />
+
+            <ImageView
+                android:layout_width="210dp"
+                android:layout_height="48dp"
+                android:background="@drawable/background_list"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/spinner_createCategory" />
+
+            <Spinner
+                android:id="@+id/spinner_createCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/product"
                 android:minHeight="48dp"
-                android:text="Used" />
-        </RadioGroup>
+                android:gravity="end"
+                android:backgroundTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/categoryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/categoryText" />
 
-        <TextView
-            android:id="@+id/categoryText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="370dp"
-            android:text="Category"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/shipmentPlanText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Shipment Plan"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/categoryText" />
 
-        <Spinner
-            android:id="@+id/spinner_createCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="216dp"
-            android:layout_marginTop="356dp"
-            android:layout_marginEnd="29dp"
-            android:entries="@array/product"
-            android:minHeight="48dp" />
+            <ImageView
+                android:layout_width="210dp"
+                android:layout_height="48dp"
+                android:background="@drawable/background_list"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/spinner_createShipment" />
 
-        <TextView
-            android:id="@+id/shipmentPlanText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="420dp"
-            android:layout_marginBottom="50dp"
-            android:text="Shipment Plan"
-            android:textSize="16sp" />
+            <Spinner
+                android:id="@+id/spinner_createShipment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/shipmentPlans"
+                android:minHeight="48dp"
+                android:backgroundTint="@color/white"
+                android:gravity="end"
+                app:layout_constraintBottom_toBottomOf="@+id/shipmentPlanText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/shipmentPlanText" />
 
-        <Spinner
-            android:id="@+id/spinner_createShipment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="216dp"
-            android:layout_marginTop="406dp"
-            android:layout_marginEnd="29dp"
-            android:entries="@array/shipmentPlans"
-            android:minHeight="48dp" />
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/btnCreateProduct"
@@ -150,9 +233,10 @@
         android:layout_height="52dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
-        android:backgroundTint="@color/gray"
+        android:backgroundTint="@color/button_purple"
         android:text="Create"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        android:fontFamily="@font/montserrat_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -162,9 +246,10 @@
         android:layout_height="52dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/gray"
+        android:backgroundTint="@color/button_purple"
         android:text="Cancel"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
+        android:fontFamily="@font/montserrat_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 

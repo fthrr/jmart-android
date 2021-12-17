@@ -6,10 +6,32 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Request class Create Product
+ *
+ * @author Fathurrahman Irwansa
+ * @version Final
+ */
 public class CreateProductRequest extends StringRequest {
+    /**
+     * Instance variable untuk CreateProductRequest
+     */
     private static final String URL = "http://10.0.2.2:8080/product/create";
     private Map<String, String> params;
 
+    /**
+     * Put method untuk CreateProductRequest
+     * @param accountId         account id
+     * @param name              product name
+     * @param weight            product weight
+     * @param conditionUsed     product condition
+     * @param price             product price
+     * @param discount          product discount
+     * @param category          product category
+     * @param shipmentPlans     product shipment plan
+     * @param listener          listener request
+     * @param errorListener     error listener request
+     */
     public CreateProductRequest(
             String accountId,
             String name,
@@ -34,6 +56,10 @@ public class CreateProductRequest extends StringRequest {
         params.put("shipmentPlans", shipmentPlans);
     }
 
+    /**
+     * Mutator method untuk mengambil parameter
+     * @return  parameter
+     */
     public Map<String, String> getParams(){
         return params;
     }

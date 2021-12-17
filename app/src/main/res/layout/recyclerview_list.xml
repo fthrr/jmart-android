@@ -1,15 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="10dp">
+    android:background="@drawable/background_list"
+    android:layout_marginBottom="12dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_height="110dp">
 
     <TextView
         android:id="@+id/tv_productName"
+        android:layout_width="244dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:maxEms="12"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/rv_image_product"
+        app:layout_constraintTop_toTopOf="@+id/rv_image_product"
+        tools:text="A Very Very Long Product Name Combined" />
+
+    <TextView
+        android:id="@+id/rv_tv_productPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"/>
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="SamplePrice"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_tv_productCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_tv_productCategory" />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Rp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_tv_productCategory"
+        app:layout_constraintEnd_toStartOf="@+id/rv_tv_productPrice"
+        app:layout_constraintTop_toTopOf="@+id/rv_tv_productCategory" />
+
+    <TextView
+        android:id="@+id/rv_tv_productCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SampleCategory"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_image_product"
+        app:layout_constraintStart_toStartOf="@+id/tv_productName" />
+
+    <ImageView
+        android:id="@+id/rv_image_product"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

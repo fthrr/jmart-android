@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".PaymentActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_reviewYourOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/back_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_amountLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Amount:"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_discountLabel"
+                app:layout_constraintTop_toBottomOf="@+id/tv_discountLabel" />
+
+            <TextView
+                android:id="@+id/tv_reviewYourOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Review Your Order"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_sellerIdLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Seller ID:"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_reviewYourOrder"
+                app:layout_constraintEnd_toStartOf="@+id/tv_sellerId"
+                app:layout_constraintTop_toTopOf="@+id/tv_reviewYourOrder" />
+
+            <TextView
+                android:id="@+id/tv_sellerId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="SampleSellerID"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/button_purple"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_sellerIdLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_sellerIdLabel" />
+
+            <ImageView
+                android:id="@+id/image_productPayment"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerInside"
+                app:layout_constraintStart_toStartOf="@+id/tv_reviewYourOrder"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reviewYourOrder"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tv_productNamePayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:maxEms="8"
+                android:text="SampleName"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/image_productPayment"
+                app:layout_constraintTop_toTopOf="@+id/image_productPayment" />
+
+            <TextView
+                android:id="@+id/tv_categoryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Category:"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/tv_productNamePayment"
+                app:layout_constraintTop_toBottomOf="@+id/tv_productNamePayment" />
+
+            <TextView
+                android:id="@+id/tv_categoryPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="TextView"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/button_purple"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_categoryLabel"
+                app:layout_constraintStart_toEndOf="@+id/tv_categoryLabel"
+                app:layout_constraintTop_toTopOf="@+id/tv_categoryLabel" />
+
+            <TextView
+                android:id="@+id/tv_priceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Price:"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/tv_categoryLabel"
+                app:layout_constraintTop_toBottomOf="@+id/tv_categoryLabel" />
+
+            <TextView
+                android:id="@+id/tv_discountLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Discount:"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/tv_priceLabel"
+                app:layout_constraintTop_toBottomOf="@+id/tv_priceLabel" />
+
+            <TextView
+                android:id="@+id/tv_pricePayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="SamplePrice"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/button_purple"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_priceLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_priceLabel" />
+
+            <TextView
+                android:id="@+id/tv_discountPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="SampleDiscount"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/button_purple"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_discountLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_discountLabel" />
+
+            <EditText
+                android:id="@+id/et_amountPayment"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="14dp"
+                android:ems="5"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:text="1"
+                android:background="@drawable/textboxt"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_amountLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_amountLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnSubmitPayment"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/button_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Submit Payment"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_shipmentAddress" />
+
+    <Button
+        android:id="@+id/btnCancelPayment"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:fontFamily="@font/montserrat_bold"
+        android:backgroundTint="@color/button_purple"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSubmitPayment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnSubmitPayment" />
+
+    <TextView
+        android:id="@+id/tv_totalPriceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Total:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_reviewYourOrder" />
+
+    <TextView
+        android:id="@+id/tv_shipmentAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Enter shipment address:"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_shipmentPaymentLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tv_shipmentPaymentLabel" />
+
+    <TextView
+        android:id="@+id/tv_totalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="SampleTotalPrice"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/button_purple"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_totalPriceLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_totalPriceLabel" />
+
+    <TextView
+        android:id="@+id/tv_shipmentPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SampleShipment"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/button_purple"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_shipmentPaymentLabel"
+        app:layout_constraintEnd_toEndOf="@+id/tv_balancePayment"
+        app:layout_constraintTop_toTopOf="@+id/tv_shipmentPaymentLabel" />
+
+    <TextView
+        android:id="@+id/tv_balancePaymentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Balance:"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_totalPriceLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tv_totalPriceLabel" />
+
+    <TextView
+        android:id="@+id/tv_balancePayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SampleBalance"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/button_purple"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_balancePaymentLabel"
+        app:layout_constraintEnd_toEndOf="@+id/tv_totalPrice"
+        app:layout_constraintTop_toTopOf="@+id/tv_balancePaymentLabel" />
+
+    <TextView
+        android:id="@+id/tv_yourCurrentBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Your current balance"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/tv_balancePaymentLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tv_balancePaymentLabel" />
+
+    <TextView
+        android:id="@+id/tv_shipmentPaymentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Shipment:"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/tv_yourCurrentBalance"
+        app:layout_constraintTop_toBottomOf="@+id/tv_yourCurrentBalance" />
+
+    <EditText
+        android:id="@+id/et_shipmentAddress"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:ems="17"
+        android:hint="Address"
+        android:textColorHint="@color/gray"
+        android:background="@drawable/textboxt"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_shipmentAddressLabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

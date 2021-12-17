@@ -4,12 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/mainTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabTextAppearance="@style/tab_text"
+        app:tabTextColor="@color/button_purple"
+        android:background="@color/background"
+        app:tabIndicatorColor="@color/button_purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="visible"
+        app:cardBackgroundColor="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,24 +52,26 @@
 
             <Button
                 android:id="@+id/btnPrev"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/button_purple"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="Prev"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btnNext"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="8dp"
                 android:text="Next"
-                android:backgroundTint="@color/gray"
-                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat_bold"
+                android:backgroundTint="@color/button_purple"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/btnPrev"
                 app:layout_constraintStart_toEndOf="@+id/btnPrev"
                 app:layout_constraintTop_toTopOf="@+id/btnPrev" />
@@ -71,23 +79,29 @@
             <Button
                 android:id="@+id/btnGo"
                 android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/button_purple"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="Go"
-                android:backgroundTint="@color/gray"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/et_page"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/et_page" />
 
             <EditText
                 android:id="@+id/et_page"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="49dp"
+                android:background="@drawable/textboxt"
                 android:ems="4"
                 android:hint="Page"
                 android:inputType="number"
                 android:minHeight="48dp"
+                android:text="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
                 app:layout_constraintBottom_toBottomOf="@+id/btnNext"
                 app:layout_constraintEnd_toStartOf="@+id/btnGo"
                 app:layout_constraintStart_toEndOf="@+id/btnNext"
@@ -98,6 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                tools:listitem="@layout/recyclerview_list"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnPrev" />
@@ -112,6 +127,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="invisible"
+        app:cardBackgroundColor="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,40 +140,62 @@
 
             <EditText
                 android:id="@+id/et_productName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="360dp"
+                android:layout_height="51dp"
                 android:layout_marginStart="17dp"
-                android:ems="18"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="17dp"
+                android:background="@drawable/textboxt"
+                android:ems="16"
+                android:fontFamily="@font/montserrat"
                 android:hint="Product Name"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_productName" />
 
             <EditText
                 android:id="@+id/et_lowestPrice"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="5dp"
-                android:ems="7"
+                android:background="@drawable/textboxt"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:ems="6"
+                android:hint="0"
+                android:textColorHint="@color/gray"
                 android:inputType="number"
                 android:minHeight="48dp"
-                android:hint="0"
+                android:textColor="@color/white"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_lowestPrice" />
 
             <EditText
                 android:id="@+id/et_highestPrice"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="252dp"
-                android:ems="7"
+                android:layout_marginEnd="17dp"
+                android:background="@drawable/textboxt"
+                android:ems="6"
+                android:hint="50000"
+                android:textColorHint="@color/gray"
                 android:inputType="number"
                 android:minHeight="48dp"
-                android:hint="50000"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/et_lowestPrice"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/et_lowestPrice"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -165,9 +203,11 @@
                 android:id="@+id/tv_productName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="Name"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -176,7 +216,9 @@
                 android:id="@+id/tv_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
                 android:text="to"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/et_lowestPrice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -186,11 +228,12 @@
                 android:id="@+id/tv_lowestPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="Lowest Price"
+                android:textColor="@color/white"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/et_lowestPrice"
                 app:layout_constraintTop_toBottomOf="@+id/et_productName" />
 
             <TextView
@@ -201,6 +244,8 @@
                 android:layout_marginTop="30dp"
                 android:text="Product Condition"
                 android:textSize="14sp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_lowestPrice" />
 
@@ -210,8 +255,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="Product Category"
                 android:textSize="14sp"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_productCondition" />
 
@@ -219,38 +266,38 @@
                 android:id="@+id/tv_highestPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="180dp"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="Highest Price"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_lowestPrice"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/et_highestPrice"
                 app:layout_constraintTop_toTopOf="@+id/tv_lowestPrice" />
 
             <CheckBox
                 android:id="@+id/cb_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginEnd="16dp"
                 android:checked="false"
-
+                android:fontFamily="@font/montserrat"
                 android:text="New"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_productCondition"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.476"
-                app:layout_constraintStart_toEndOf="@+id/tv_productCondition"
+                app:layout_constraintEnd_toStartOf="@+id/cb_used"
                 app:layout_constraintTop_toTopOf="@+id/tv_productCondition"
-                app:layout_constraintVertical_bias="0.482" />
+                app:layout_constraintVertical_bias="0.48" />
 
             <CheckBox
                 android:id="@+id/cb_used"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Used"
-
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/cb_new"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/cb_new"
                 app:layout_constraintTop_toTopOf="@+id/cb_new" />
 
             <Button
@@ -259,9 +306,10 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="32dp"
-                android:backgroundTint="@color/gray"
+                android:backgroundTint="@color/button_purple"
                 android:text="Apply"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -270,25 +318,35 @@
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/gray"
+                android:backgroundTint="@color/button_purple"
                 android:text="Clear"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_bold"
                 app:layout_constraintBottom_toBottomOf="@+id/btnApply"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/btnApply" />
 
+            <ImageView
+                android:layout_width="170dp"
+                android:layout_height="48dp"
+                android:background="@drawable/background_list"
+                app:layout_constraintBottom_toBottomOf="@+id/spinner_filterCategory"
+                app:layout_constraintEnd_toEndOf="@+id/spinner_filterCategory"
+                app:layout_constraintTop_toTopOf="@+id/spinner_filterCategory" />
+
             <Spinner
                 android:id="@+id/spinner_filterCategory"
+                style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/white"
                 android:entries="@array/product"
                 android:gravity="end"
                 android:minHeight="48dp"
-                android:spinnerMode="dropdown"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_productCategory"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_productCategory"
-                app:layout_constraintVertical_bias="0.448" />
+                app:layout_constraintTop_toTopOf="@+id/tv_productCategory" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

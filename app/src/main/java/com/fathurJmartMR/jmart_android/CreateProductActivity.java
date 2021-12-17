@@ -16,7 +16,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.fathurJmartMR.jmart_android.request.CreateProductRequest;
 
+/**
+ * Activity Class untuk AboutMe Page
+ *
+ * @author Fathurrahman Irwansa
+ * @version Final
+ */
 public class CreateProductActivity extends AppCompatActivity {
+    /**
+     * Instance variable untuk createProductActivity
+     */
     private Button btnCreateProduct, btnCancelProduct;
     private EditText et_createProductName, et_createProductPrice, et_createProductWeight, et_createProductDiscount;
     private RadioGroup radio_conditionList;
@@ -35,7 +44,7 @@ public class CreateProductActivity extends AppCompatActivity {
         et_createProductDiscount = findViewById(R.id.et_createProductDiscount);
         spinner_createCategory = findViewById(R.id.spinner_createCategory);
         spinner_createShipment = findViewById(R.id.spinner_createShipment);
-
+        //Handle checking value of checked radiogroup buttons
         radio_conditionList = findViewById(R.id.radio_conditionList);
         radio_conditionList.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -50,7 +59,6 @@ public class CreateProductActivity extends AppCompatActivity {
                 }
             }
         });
-
         btnCreateProduct = findViewById(R.id.btnCreateProduct);
         btnCreateProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +70,7 @@ public class CreateProductActivity extends AppCompatActivity {
                 String productDiscount = et_createProductDiscount.getText().toString();
                 String productCategory = spinner_createCategory.getSelectedItem().toString();
                 String productShipment = spinner_createShipment.getSelectedItem().toString();
+                //Convert productShipment string value into byte values to be stored
                 switch (productShipment) {
                     case "INSTANT":
                         productShipment = String.valueOf(0);
@@ -82,7 +91,6 @@ public class CreateProductActivity extends AppCompatActivity {
                         productShipment = String.valueOf(3);
                         break;
                 }
-
                 System.out.println(productCategory + "  " + productShipment);
                 CreateProductRequest createProductRequest = new CreateProductRequest(accountId, productName, productWeight,
                         String.valueOf(newProductCondition), productPrice, productDiscount, productCategory, productShipment,
@@ -92,6 +100,7 @@ public class CreateProductActivity extends AppCompatActivity {
                                 try {
                                     Toast.makeText(getApplicationContext(), "Create product successful", Toast.LENGTH_LONG).show();
                                     finish();
+                                    //If succesful, go back to/and reload the Main Activity
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                     Toast.makeText(getApplicationContext(), "Create product unsuccessful, error occurred", Toast.LENGTH_LONG).show();
@@ -100,13 +109,12 @@ public class CreateProductActivity extends AppCompatActivity {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Create product unsuccessful, error occurred", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Create product unsuccessful, can't connect to server", Toast.LENGTH_LONG).show();
                     }
                 });
                 queue.add(createProductRequest);
             }
         });
-
         btnCancelProduct = findViewById(R.id.btnCancelProduct);
         btnCancelProduct.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -22,26 +22,31 @@ import com.fathurJmartMR.jmart_android.request.RegisterStoreRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Activity Class untuk AboutMe Page
+ *
+ * @author Fathurrahman Irwansa
+ * @version Final
+ */
 public class AboutMeActivity extends AppCompatActivity {
-    private TextView tv_userName;
-    private TextView tv_userEmail;
-    private TextView tv_userBalance;
-    private Button btnTopUp;
-    private Button btnRegisterStore;
+    /**
+     * Instance Variable untuk class AboutMeActivity
+     */
+    private TextView tv_userName, tv_userEmail, tv_userBalance;
+    private Button btnTopUp, btnRegisterStore, btnInvoiceHistory;
     private EditText et_topUpAmount;
     private CardView cv_storeExists;
-
     private CardView cv_registerStore;
-    private EditText et_storeName;
-    private EditText et_storeAddress;
-    private EditText et_storePhoneNumber;
-    private Button btnRegisterStoreCancel;
-    private Button btnRegisterStoreConfirm;
-
+    private EditText et_storeName, et_storeAddress, et_storePhoneNumber;
+    private Button btnRegisterStoreCancel, btnRegisterStoreConfirm;
     private TextView tv_storeNameF;
     private TextView tv_storeAddressF;
     private TextView tv_storePhoneNumberF;
 
+    /**
+     * Overide onCreate Method untuk menampilkan page about me
+     * @param savedInstanceState    Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +61,17 @@ public class AboutMeActivity extends AppCompatActivity {
         tv_userEmail.setText(LoginActivity.getLoggedAccount().email);
         tv_userBalance.setText(String.valueOf(LoginActivity.getLoggedAccount().balance));
 
+        //Button untuk mengarahkan ke Invoice
+        btnInvoiceHistory = findViewById(R.id.btnInvoiceHistory);
+        btnInvoiceHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), InvoiceHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Top Up button handler
         btnTopUp = findViewById(R.id.btnTopUp);
         btnTopUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +94,7 @@ public class AboutMeActivity extends AppCompatActivity {
                 }, new Response.ErrorListener(){
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "System Failure", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Top Up unsuccessful, Can't connect to server", Toast.LENGTH_LONG).show();
                     }
                 }){
                     @Override
@@ -92,6 +108,7 @@ public class AboutMeActivity extends AppCompatActivity {
             }
         });
 
+        //Mengecek apakah sudah memiliki toko atau belum
         btnRegisterStore = findViewById(R.id.btnRegisterStore);
         cv_registerStore = findViewById(R.id.cv_registerStore);
         cv_storeExists = findViewById(R.id.cv_storeExists);
@@ -103,7 +120,7 @@ public class AboutMeActivity extends AppCompatActivity {
         if(LoginActivity.getLoggedAccount().store != null){
             btnRegisterStore.setVisibility(View.GONE);
             cv_storeExists.setVisibility(View.VISIBLE);
-
+            //Menampilkan toko yang sudah ada
             tv_storeNameF = findViewById(R.id.tv_storeNameF);
             tv_storeAddressF = findViewById(R.id.tv_storeAddressF);
             tv_storePhoneNumberF = findViewById(R.id.tv_storePhoneNumberF);
@@ -111,7 +128,9 @@ public class AboutMeActivity extends AppCompatActivity {
             tv_storeAddressF.setText(LoginActivity.getLoggedAccount().store.address);
             tv_storePhoneNumberF.setText(LoginActivity.getLoggedAccount().store.phoneNumber);
         }
-
+        //Click register store button -> Hide button, show Registering Store CardView
+        //Click register store cancel button -> hide Registering Store CardView, show button again
+        //Click register store confirm button -> if fail, display error toast. If succesful, reload the activity with new store
         btnRegisterStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,7 +167,7 @@ public class AboutMeActivity extends AppCompatActivity {
                 }, new Response.ErrorListener(){
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "System Failure", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Register Store unsuccessful, Can't connect to server", Toast.LENGTH_LONG).show();
                     }
                 });
                 queue.add(registerStoreRequest);

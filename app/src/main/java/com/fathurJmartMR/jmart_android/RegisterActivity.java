@@ -19,9 +19,16 @@ import com.fathurJmartMR.jmart_android.request.RegisterRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Activity Class untuk Register Page
+ *
+ * @author Fathurrahman Irwansa
+ * @version Final
+ */
 public class RegisterActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener{
 
     private Button registerBtn;
+    private TextView login;
     private EditText inName;
     private EditText inEmail;
     private EditText inPass;
@@ -35,8 +42,14 @@ public class RegisterActivity extends AppCompatActivity implements Response.List
         inName = findViewById(R.id.nameRegister);
         inEmail = findViewById(R.id.emailRegister);
         inPass = findViewById(R.id.passwordRegister);
+        login = findViewById(R.id.loginText);
 
         registerBtn.setOnClickListener(this::onRegisterClick);
+        login.setOnClickListener(this::onLoginClick);
+    }
+
+    private void onLoginClick(View v){
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     private void onRegisterClick(View v){
