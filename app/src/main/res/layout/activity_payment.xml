@@ -161,8 +161,20 @@
                 android:id="@+id/tv_discountPayment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="Discount"
+                android:textColor="@color/button_purple"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_discountLabel"
+                app:layout_constraintEnd_toStartOf="@+id/tv_discountPersen"
+                app:layout_constraintTop_toTopOf="@+id/tv_discountLabel" />
+
+            <TextView
+                android:id="@+id/tv_discountPersen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="SampleDiscount"
+                android:text=" %"
                 android:fontFamily="@font/montserrat"
                 android:textColor="@color/button_purple"
                 android:textSize="12sp"

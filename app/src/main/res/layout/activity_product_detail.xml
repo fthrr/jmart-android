@@ -81,11 +81,11 @@
                 android:id="@+id/tv_detailWeightLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="Weight"
                 android:textColor="@color/white"
-                android:fontFamily="@font/montserrat_bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_detailCategoryLabel"
-                app:layout_constraintEnd_toEndOf="@+id/tv_detailDiscount"
+                app:layout_constraintEnd_toEndOf="@+id/tv_persen"
                 app:layout_constraintTop_toTopOf="@+id/tv_detailCategoryLabel" />
 
             <TextView
@@ -141,11 +141,12 @@
                 android:id="@+id/tv_detailAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
                 android:fontFamily="@font/montserrat"
                 android:text="Id"
                 android:textColor="@color/button_purple"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_detailAccountLabel"
-                app:layout_constraintEnd_toEndOf="@+id/tv_detailName"
+                app:layout_constraintEnd_toStartOf="@+id/image_product"
                 app:layout_constraintTop_toTopOf="@+id/tv_detailAccountLabel" />
 
             <TextView
@@ -191,6 +192,20 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/montserrat"
                 android:text="SampleDiscount"
+                android:textColor="@color/button_purple"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_detailPrice"
+                app:layout_constraintEnd_toStartOf="@+id/tv_persen"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detailDiscountLabel"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tv_persen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/montserrat"
+                android:text=" %"
                 android:textColor="@color/button_purple"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_detailPrice"

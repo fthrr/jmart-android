@@ -80,6 +80,24 @@
         app:layout_constraintTop_toBottomOf="@+id/rv_tv_invoiceShipmentAddressT"
         tools:ignore="TouchTargetSizeCheck" />
 
+    <Button
+        android:id="@+id/rv_btnFinishTransactionT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/blue_auth"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="FINISH"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_tv_invoiceShipmentAddressT"
+        tools:ignore="TouchTargetSizeCheck" />
+
     <TextView
         android:id="@+id/rv_tv_invoiceAmountT"
         android:layout_width="wrap_content"
@@ -107,7 +125,7 @@
         android:id="@+id/rv_tv_invoiceShipmentAddressLabelT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Shipment Address:"
         android:textColor="@color/white"

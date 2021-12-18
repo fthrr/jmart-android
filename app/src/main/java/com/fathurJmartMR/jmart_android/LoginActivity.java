@@ -100,4 +100,9 @@ public class LoginActivity extends AppCompatActivity implements Response.Listene
         Store newStore = gson.fromJson(response, Store.class);
         loggedAccount.store = newStore;
     }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAffinity();
+    }
 }

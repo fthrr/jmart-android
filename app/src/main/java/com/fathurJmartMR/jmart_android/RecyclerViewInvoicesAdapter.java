@@ -1,6 +1,7 @@
 package com.fathurJmartMR.jmart_android;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,7 @@ public class RecyclerViewInvoicesAdapter extends RecyclerView.Adapter<RecyclerVi
 
         Payment paymentName = mData.get(position);
         Product productName = invoiceProducts.get(position);
+        holder.id = paymentName.id;
         if(productName.toString().length() >= 38){
             holder.rv_tv_invoiceName.setTextSize(12.0f);
             holder.rv_tv_invoiceName.setMaxEms(10);
@@ -89,12 +91,22 @@ public class RecyclerViewInvoicesAdapter extends RecyclerView.Adapter<RecyclerVi
         holder.rv_tv_invoiceShipmentAddress.setText(paymentName.shipment.address);
         holder.rv_image_productInvoice.setImageResource(ProductDetailActivity.getDrawableId(productName.category.toString()));
         if (paymentName.history.get(paymentName.history.size() - 1).status.toString() != "WAITING_CONFIRMATION") {
+            holder.rv_btnDoneTransaction.setVisibility(View.GONE);
             holder.rv_btnAcceptInvoice.setVisibility(View.GONE);
             holder.rv_btnCancelTransaction.setVisibility(View.GONE);
         }
         if (paymentName.history.get(paymentName.history.size() - 1).status.toString() == "ON_PROGRESS") {
             holder.rv_btnSubmitTransaction.setVisibility(View.VISIBLE);
             holder.receipt.setVisibility(View.VISIBLE);
+        }
+        if (paymentName.history.get(paymentName.history.size() - 1).status.toString() == "ON_DELIVERY") {
+            holder.rv_btnSubmitTransaction.setVisibility(View.GONE);
+            holder.receipt.setVisibility(View.GONE);
+            holder.rv_btnDoneTransaction.setVisibility(View.VISIBLE);
+        }
+        if (paymentName.history.get(paymentName.history.size() - 1).status.toString() == "DELIVERED"){
+            holder.rv_btnSubmitTransaction.setVisibility(View.GONE);
+            holder.rv_btnDoneTransaction.setVisibility(View.GONE);
         }
     }
 
@@ -129,6 +141,7 @@ public class RecyclerViewInvoicesAdapter extends RecyclerView.Adapter<RecyclerVi
         EditText receipt;
         Button rv_btnSubmitTransaction;
         Button rv_btnAcceptInvoice, rv_btnCancelTransaction;
+        Button rv_btnDoneTransaction;
         int id;
 
         ViewHolder(View itemView) {
@@ -145,6 +158,7 @@ public class RecyclerViewInvoicesAdapter extends RecyclerView.Adapter<RecyclerVi
             rv_btnAcceptInvoice = itemView.findViewById(R.id.rv_btnAcceptInvoice);
             rv_btnCancelTransaction = itemView.findViewById(R.id.rv_btnCancelTransaction);
             rv_btnSubmitTransaction = itemView.findViewById(R.id.rv_btnSubmitTransaction);
+            rv_btnDoneTransaction = itemView.findViewById((R.id.rv_btnDoneTransaction));
             receipt = itemView.findViewById(R.id.receipt);
             rv_btnAcceptInvoice.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -210,6 +224,29 @@ public class RecyclerViewInvoicesAdapter extends RecyclerView.Adapter<RecyclerVi
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(mInflater.getContext(), "Submit unsuccessful, Can't connect to server", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    RequestQueue queue = Volley.newRequestQueue(mInflater.getContext());
+                    queue.add(cancelRequest);
+                }
+            });
+            rv_btnDoneTransaction.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    StringRequest cancelRequest = new StringRequest(Request.Method.POST, "http://10.0.2.2:8080/payment/"+id+"/done", new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                Toast.makeText(mInflater.getContext(), "Order transaction done", Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Toast.makeText(mInflater.getContext(), "Order transaction unsuccessful", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }, new Response.ErrorListener(){
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(mInflater.getContext(), "Order transaction unsuccessful", Toast.LENGTH_LONG).show();
                         }
                     });
                     RequestQueue queue = Volley.newRequestQueue(mInflater.getContext());

@@ -5,10 +5,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,8 +37,11 @@ import java.util.List;
  */
 public class InvoiceHistoryActivity extends AppCompatActivity implements RecyclerViewInvoicesAdapter.ItemClickListener, RecyclerViewTransactionAdapter.ItemClickListener {
     private static final Gson gson = new Gson();
+    Button button_home;
     RecyclerViewInvoicesAdapter adapterInvoices;
     RecyclerViewTransactionAdapter adapterTransactions;
+    SwipeRefreshLayout refreshInvoices;
+    SwipeRefreshLayout refreshTransaction;
     private TabLayout invoiceTabLayout;
     private CardView cv_myTransactions, cv_storeInvoices;
 
@@ -49,9 +54,18 @@ public class InvoiceHistoryActivity extends AppCompatActivity implements Recycle
         RequestQueue queue = Volley.newRequestQueue(this);
         RequestQueue queue2 = Volley.newRequestQueue(this);
 
+        button_home = findViewById(R.id.button_home);
         invoiceTabLayout = findViewById(R.id.invoiceTabLayout);
         cv_myTransactions = findViewById(R.id.cv_myTransactions);
         cv_storeInvoices = findViewById(R.id.cv_storeInvoices);
+
+        button_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
         //Tab Selector Listener
         invoiceTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -88,11 +102,23 @@ public class InvoiceHistoryActivity extends AppCompatActivity implements Recycle
             fetchInvoices(storeInvoices, pageS, queue, true);
             fetchInvoiceProducts(invoiceProducts, pageS, queue2, true);
             RecyclerView recyclerInvoices = findViewById(R.id.rv_storeInvoices);
+            refreshInvoices =findViewById(R.id.refresh_invoices);
             recyclerInvoices.setLayoutManager(new LinearLayoutManager(this));
             adapterInvoices = new RecyclerViewInvoicesAdapter(this, storeInvoices, invoiceProducts);
             adapterInvoices.setClickListener(this);
             recyclerInvoices.setAdapter(adapterInvoices);
             recyclerInvoices.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+            refreshInvoices.setColorSchemeColors(getResources().getColor(R.color.button_purple));
+            refreshInvoices.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    fetchInvoices(storeInvoices, pageS, queue, true);
+                    fetchInvoiceProducts(invoiceProducts, pageS, queue2, true);
+                    recyclerInvoices.setAdapter(adapterInvoices);
+                    refreshInvoices.setRefreshing(false);
+                }
+            });
         }catch (Exception e){
             e.printStackTrace();
             finish();
@@ -107,11 +133,23 @@ public class InvoiceHistoryActivity extends AppCompatActivity implements Recycle
             fetchTransactions(myTransactions, pageT, queue, true);
             fetchTransactionProducts(transactionProducts, pageT, queue, true);
             RecyclerView recyclerTransactions = findViewById(R.id.rv_transactions);
+            refreshTransaction =findViewById(R.id.refresh_transaction);
             recyclerTransactions.setLayoutManager(new LinearLayoutManager(this));
             adapterTransactions = new RecyclerViewTransactionAdapter(this, myTransactions, transactionProducts);
             adapterTransactions.setClickListener(this);
             recyclerTransactions.setAdapter(adapterTransactions);
             recyclerTransactions.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL)); //Add divider to each row
+
+            refreshTransaction.setColorSchemeColors(getResources().getColor(R.color.button_purple));
+            refreshTransaction.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    fetchTransactions(myTransactions, pageT, queue, true);
+                    fetchTransactionProducts(transactionProducts, pageT, queue, true);
+                    recyclerTransactions.setAdapter(adapterTransactions);
+                    refreshTransaction.setRefreshing(false);
+                }
+            });
         }catch (Exception e){
             e.printStackTrace();
             finish();

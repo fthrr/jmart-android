@@ -100,8 +100,8 @@ public class PaymentActivity extends AppCompatActivity {
                 tv_pricePayment.setText(String.valueOf(productPrice));
                 tv_discountPayment.setText(String.valueOf(productDiscount));
                 tv_sellerId.setText(String.valueOf(fetchedProduct.accountId));
-                tv_totalPrice.setText(String.valueOf(amount * (productPrice - productDiscount)));
-                tv_balancePayment.setText(String.valueOf(currentLogged.balance));
+                tv_totalPrice.setText(String.valueOf(amount * (productPrice - ((productDiscount/100)*productPrice))));
+                tv_balancePayment.setText(String.valueOf(Math.round(currentLogged.balance)));
                 shipmentPlans = fetchedProduct.shipmentPlans;
                 switch (shipmentPlans){
                     case 0:

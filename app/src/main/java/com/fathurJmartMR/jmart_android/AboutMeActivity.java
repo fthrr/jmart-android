@@ -38,7 +38,7 @@ public class AboutMeActivity extends AppCompatActivity {
     private CardView cv_storeExists;
     private CardView cv_registerStore;
     private EditText et_storeName, et_storeAddress, et_storePhoneNumber;
-    private Button btnRegisterStoreCancel, btnRegisterStoreConfirm;
+    private Button btnRegisterStoreCancel, btnRegisterStoreConfirm, logout_button;
     private TextView tv_storeNameF;
     private TextView tv_storeAddressF;
     private TextView tv_storePhoneNumberF;
@@ -59,7 +59,7 @@ public class AboutMeActivity extends AppCompatActivity {
         et_topUpAmount = findViewById(R.id.et_topUpAmount);
         tv_userName.setText(LoginActivity.getLoggedAccount().name);
         tv_userEmail.setText(LoginActivity.getLoggedAccount().email);
-        tv_userBalance.setText(String.valueOf(LoginActivity.getLoggedAccount().balance));
+        tv_userBalance.setText(String.valueOf(Math.round(LoginActivity.getLoggedAccount().balance)));
 
         //Button untuk mengarahkan ke Invoice
         btnInvoiceHistory = findViewById(R.id.btnInvoiceHistory);
@@ -67,6 +67,15 @@ public class AboutMeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), InvoiceHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        logout_button = findViewById(R.id.logout_button);
+        logout_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });

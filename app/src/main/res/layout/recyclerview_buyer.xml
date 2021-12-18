@@ -7,6 +7,7 @@
     android:layout_marginTop="12dp"
     android:layout_marginLeft="12dp"
     android:layout_marginRight="12dp"
+    android:paddingBottom="18dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -29,12 +30,13 @@
         android:id="@+id/rv_tv_invoiceStatus"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="SampleStatus"
         android:textColor="@color/white"
-        android:textSize="11sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/rv_tv_invoiceTotalPrice"
-        app:layout_constraintTop_toTopOf="@+id/rv_tv_invoiceShipmentAddressLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/rv_image_productInvoice" />
 
     <ImageView
         android:id="@+id/rv_image_productInvoice"
@@ -51,9 +53,8 @@
     <Button
         android:id="@+id/rv_btnCancelTransaction"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/blue_auth"
         android:fontFamily="@font/montserrat_bold"
         android:text="Cancel"
@@ -61,8 +62,7 @@
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/receipt"
+        app:layout_constraintEnd_toEndOf="@+id/rv_tv_invoiceStatus"
         app:layout_constraintTop_toBottomOf="@+id/rv_tv_invoiceShipmentAddress"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -130,7 +130,7 @@
         android:id="@+id/rv_tv_invoiceShipmentAddressLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Shipment Address:"
         android:textColor="@color/white"
@@ -142,7 +142,7 @@
         android:id="@+id/rv_tv_invoiceShipmentAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat"
         android:maxEms="14"
         android:text="TextView"
@@ -155,25 +155,25 @@
     <Button
         android:id="@+id/rv_btnAcceptInvoice"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginEnd="24dp"
         android:backgroundTint="@color/blue_auth"
+        android:fontFamily="@font/montserrat_bold"
         android:text="Accept"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="12sp"
-        android:visibility="invisible"
-        android:fontFamily="@font/montserrat_bold"
         app:layout_constraintBottom_toBottomOf="@+id/rv_btnCancelTransaction"
-        app:layout_constraintStart_toStartOf="@+id/rv_tv_invoiceShipmentAddress"
+        app:layout_constraintEnd_toStartOf="@+id/rv_btnCancelTransaction"
         app:layout_constraintTop_toTopOf="@+id/rv_btnCancelTransaction"
-        tools:ignore="TouchTargetSizeCheck"
-        tools:visibility="visible" />
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/rv_btnSubmitTransaction"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="@color/blue_auth"
         android:fontFamily="@font/montserrat_bold"
         android:text="Submit"
@@ -181,16 +181,29 @@
         android:textAllCaps="true"
         android:textSize="12sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_btnCancelTransaction"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rv_btnCancelTransaction"
-        tools:visibility="visible" />
+        app:layout_constraintEnd_toEndOf="@+id/rv_tv_invoiceStatus"
+        app:layout_constraintTop_toBottomOf="@+id/rv_tv_invoiceShipmentAddress" />
+
+    <Button
+        android:id="@+id/rv_btnDoneTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/blue_auth"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="DONE"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/rv_tv_invoiceStatus"
+        app:layout_constraintTop_toBottomOf="@+id/rv_tv_invoiceShipmentAddress" />
 
     <EditText
         android:id="@+id/receipt"
         android:layout_width="123dp"
         android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:fontFamily="@font/montserrat"
@@ -203,9 +216,8 @@
         android:textColorHint="@color/blue_auth"
         android:textSize="12sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_tv_invoiceShipmentAddress"
-        app:layout_constraintEnd_toEndOf="@+id/rv_tv_invoiceStatus"
-        app:layout_constraintTop_toTopOf="@+id/rv_tv_invoiceShipmentAddress"
+        app:layout_constraintStart_toStartOf="@+id/rv_tv_invoiceShipmentAddress"
+        app:layout_constraintTop_toBottomOf="@+id/rv_tv_invoiceShipmentAddress"
         tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

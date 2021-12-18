@@ -91,6 +91,12 @@ public class RecyclerViewTransactionAdapter extends RecyclerView.Adapter<Recycle
         if (paymentName.history.get(paymentName.history.size() - 1).status.toString() != "WAITING_CONFIRMATION") {
             holder.rv_btnCancelTransactionT.setVisibility(View.GONE);
         }
+        if (paymentName.history.get(paymentName.history.size() - 1).status.toString() == "DELIVERED"){
+            holder.rv_btnFinishTransactionT.setVisibility(View.VISIBLE);
+        }
+        if (paymentName.history.get(paymentName.history.size() - 1).status.toString() == "FINISHED"){
+            holder.rv_btnFinishTransactionT.setVisibility(View.GONE);
+        }
     }
 
     // total number of rows
@@ -124,6 +130,7 @@ public class RecyclerViewTransactionAdapter extends RecyclerView.Adapter<Recycle
         TextView rv_tv_invoiceShipmentAddressT;
         ImageView rv_image_productInvoiceT;
         Button rv_btnCancelTransactionT;
+        Button rv_btnFinishTransactionT;
         int id;
 
         ViewHolder(View itemView) {
@@ -138,10 +145,10 @@ public class RecyclerViewTransactionAdapter extends RecyclerView.Adapter<Recycle
             rv_tv_invoiceShipmentAddressT = itemView.findViewById(R.id.rv_tv_invoiceShipmentAddressT);
             rv_image_productInvoiceT = itemView.findViewById(R.id.rv_image_productInvoiceT);
             rv_btnCancelTransactionT = itemView.findViewById(R.id.rv_btnCancelTransactionT);
+            rv_btnFinishTransactionT = itemView.findViewById((R.id.rv_btnFinishTransactionT));
             rv_btnCancelTransactionT.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-
                     StringRequest cancelRequest = new StringRequest(Request.Method.POST, "http://10.0.2.2:8080/payment/"+id+"/cancel", new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -156,6 +163,29 @@ public class RecyclerViewTransactionAdapter extends RecyclerView.Adapter<Recycle
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(mInflater.getContext(), "Cancel unsuccessful, can't connect to server", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    RequestQueue queue = Volley.newRequestQueue(mInflater.getContext());
+                    queue.add(cancelRequest);
+                }
+            });
+            rv_btnFinishTransactionT.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    StringRequest cancelRequest = new StringRequest(Request.Method.POST, "http://10.0.2.2:8080/payment/"+id+"/finish", new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                Toast.makeText(mInflater.getContext(), "Finish transaction successful", Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Toast.makeText(mInflater.getContext(), "Finish transaction unsuccessful", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }, new Response.ErrorListener(){
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(mInflater.getContext(), "Finish transaction unsuccessful, can't connect to server", Toast.LENGTH_LONG).show();
                         }
                     });
                     RequestQueue queue = Volley.newRequestQueue(mInflater.getContext());
